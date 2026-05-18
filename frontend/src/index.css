@@ -1,0 +1,80 @@
+/* ============================================================
+   GigFlow Frontend — Global Styles
+   Tailwind directives + light/dark base styles.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Base Styles ---- */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Light mode defaults */
+  body {
+    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background-color: #B1C9EF; /* brand-lightbg */
+    color: #1e293b; /* slate-800 */
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark mode overrides */
+  .dark body {
+    background-color: #020617; /* slate-950 */
+    color: #e2e8f0; /* slate-200 */
+  }
+
+  /* Custom scrollbar - Light */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1; /* slate-300 */
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; /* slate-400 */
+  }
+
+  /* Custom scrollbar - Dark */
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155; /* slate-700 */
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #475569; /* slate-600 */
+  }
+
+  /* Select option styling */
+  option {
+    background-color: #ffffff;
+    color: #1e293b;
+  }
+
+  .dark option {
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+}

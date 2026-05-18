@@ -1,0 +1,58 @@
+# ============================================================
+# GigFlow — Docker Compose Configuration
+# Multi-container setup: Backend API + Local MongoDB fallback
+# For production, override MONGO_URI with your Atlas URI.
+# ============================================================
+
+version: "3.9"
+
+services:
+  # ---- Backend API Service ----
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gigflow-backend
+    restart: unless-stopped
+    ports:
+      - "${PORT:-5001}:5001"
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=5001
+      - MONGO_URI=${MONGO_URI:-mongodb://mongo:27017/gigflow}
+      - JWT_SECRET=${JWT_SECRET:-change_this_to_a_strong_secret_in_production}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
+      - FRONTEND_URL=${FRONTEND_URL:-http://localhost:5173}
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - gigflow-network
+
+  # ---- Local MongoDB Fallback Service ----
+  mongo:
+    image: mongo:7
+    container_name: gigflow-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - gigflow-mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - gigflow-network
+
+# ---- Named Volumes ----
+volumes:
+  gigflow-mongo-data:
+    driver: local
+
+# ---- Networks ----
+networks:
+  gigflow-network:
+    driver: bridge
