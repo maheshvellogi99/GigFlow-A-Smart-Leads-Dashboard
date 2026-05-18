@@ -6,6 +6,10 @@
 
 **Smart Leads Dashboard (GigFlow)** is a secure, role-based Customer Relationship Management (CRM) application designed to streamline the sales pipeline. It provides a robust interface for managing leads, complete with advanced filtering, data ownership isolation, and automated CSV exporting. Built with a decoupled architecture, it leverages a modern React frontend and a scalable Node.js backend.
 
+## Live Demo
+
+🚀 **[View Live Application](https://gigflow007.vercel.app)**
+
 ## Core Features
 
 - **JWT Authentication & Role-Based Access Control**: Secure login/registration flows defining distinct permissions for `Admin` and `Sales User` roles.
@@ -44,7 +48,7 @@
 | `MONGO_URI` | Your MongoDB Atlas or local connection string |
 | `JWT_SECRET` | A secure, random string for signing JSON Web Tokens |
 | `ADMIN_SECRET` | The secret key required to register a new Admin account |
-| `FRONTEND_URL` | The URL of the frontend for CORS configuration (e.g., `http://localhost:5173`) |
+| `FRONTEND_URL` | The URL of the frontend for CORS configuration (e.g., `https://gigflow007.vercel.app`) |
 
 ### Frontend (`frontend/.env`)
 
