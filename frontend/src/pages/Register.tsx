@@ -82,7 +82,7 @@ const Register: React.FC = () => {
               <label htmlFor="register-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Full name</label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 dark:text-slate-500" />
-                <input id="register-name" type="text" value={name} onChange={(e: ChangeEvent<HTMLInputElement>): void => setName(e.target.value)} placeholder="John Doe" autoComplete="name" className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-btnHover/40 focus:border-[#395886] dark:focus:border-[#395886]Hover/50 transition-all" />
+                <input id="register-name" type="text" value={name} onChange={(e: ChangeEvent<HTMLInputElement>): void => setName(e.target.value)} placeholder="Mahesh Vellogi" autoComplete="name" className="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-btnHover/40 focus:border-[#395886] dark:focus:border-[#395886]Hover/50 transition-all" />
               </div>
             </div>
 
